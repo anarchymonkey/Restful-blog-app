@@ -33,7 +33,7 @@ app.get("/blogs/create",function(req,res){
 /* ******************************************************************** */
 /*                       BLOGS UPDATE                                   */
 /* ******************************************************************** */
-app.get("/blogs/update",function(req,res){
+app.get("/blogs/update/:id",function(req,res){
   console.log("ACCESSED THE BLOGS/UPDATE PAGE WHERE THE VIEWERS WILL UPDATE THE BLOGS");
   res.render("updateBlog");
 });
