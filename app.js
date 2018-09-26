@@ -4,7 +4,7 @@ app.set("view engine","ejs");
 const bodyParser = require("body-parser");
 const request = require("request");
 const mongoose = require("mongoose");
-app.use(express.static("public"));
+app.use(express.static('public'));
 /* ******************************************************************** */
 /*                      HOME PAGE                                       */
 /* ******************************************************************** */

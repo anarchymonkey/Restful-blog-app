@@ -1,0 +1,22 @@
+
+.create
+{
+  text-align: center;
+  border: 1px solid black;
+  width: 50%;
+  height: 600px;
+  margin: 0px auto;
+  margin-top: 1.2em;
+  background: #fdfdfd;
+  border-radius: 10%;
+  box-shadow: 3px 2px 3px 2px;
+}
+.create h2
+{
+  letter-spacing: 3px;
+}
+.form-group
+{
+  width: 70%;
+  margin: 0px auto;
+}
