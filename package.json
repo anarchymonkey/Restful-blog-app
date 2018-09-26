@@ -1,0 +1,19 @@
+{
+  "name": "restful-blog-app",
+  "version": "1.0.0",
+  "description": "simple web-application using REST-API",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anarchymonkey/Restful-blog-app.git"
+  },
+  "author": "Aniket Batabyal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anarchymonkey/Restful-blog-app/issues"
+  },
+  "homepage": "https://github.com/anarchymonkey/Restful-blog-app#readme"
+}
