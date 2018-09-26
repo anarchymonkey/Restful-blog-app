@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/anarchymonkey/Restful-blog-app/issues"
   },
-  "homepage": "https://github.com/anarchymonkey/Restful-blog-app#readme"
+  "homepage": "https://github.com/anarchymonkey/Restful-blog-app#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.17",
+    "request": "^2.88.0"
+  }
 }
