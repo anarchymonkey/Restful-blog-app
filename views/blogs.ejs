@@ -1,0 +1,7 @@
+<h1> hey this is the blogs page </h1>
+<% for(var i = 0 ; i < blogs.length ; i++){%>
+  <h1> <%= blogs[i].title %> </h1>
+  <img src = "<%=blogs[i].image%>">
+  <span><p> <%= blogs[i].create %></p> </span>
+  <p> <%= blogs[i].body %></p>
+<%}%>

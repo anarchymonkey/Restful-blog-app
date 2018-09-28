@@ -3,14 +3,42 @@ const app = express();
 app.set("view engine","ejs");
 const bodyParser = require("body-parser");
 const request = require("request");
-const mongoose = require("mongoose");
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended : true}));
+
+/* Database config */
+ const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/blog",{ useNewUrlParser : true });
+let blogSchema = new mongoose.Schema({
+  title : String,
+  image : String,
+  body : String,
+  create :{
+    type: Date ,
+    default : Date.now
+  }
+
+});
+/* DATABASE CONFIG */
+let Blog = mongoose.model("Blog",blogSchema);
+
+
+
 /* ******************************************************************** */
 /*                      HOME PAGE                                       */
 /* ******************************************************************** */
+/* FOR FIRST TIME ENTRY
+
+Blog.create({
+  title : "Test Blog",
+  image : "https://images.pexels.com/photos/414660/pexels-photo-414660.jpeg?auto=compress&cs=tinysrgb&h=350",
+  body : " Hey , this is my first blog. My name is Aniket"
+});
+*/
+
 app.get("/",function(req,res){
   console.log("ACCESSED THE INDEX PAGE");
-  res.render("index");
+  res.redirect("blogs");
 });
 /* ******************************************************************** */
 /*                       BLOGS SITE                                     */
@@ -18,7 +46,18 @@ app.get("/",function(req,res){
 
 app.get("/blogs",function(req,res){
   console.log("ACCESSED THE BLOGS PAGE WHERE VIEWERS WILL VIEW THE OBJECTS");
-  res.render("blogs");
+
+Blog.find({},function(err,blogs)
+{
+  if(err)
+  {
+    console.log("ERROR IN RETRIVING");
+  }
+  else
+  {
+    res.render("blogs",{blogs : blogs });
+  }
+});
 });
 
 /* ******************************************************************** */
