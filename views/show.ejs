@@ -1,0 +1,9 @@
+<% include partials/headerCreate.ejs %>
+<h1> this is the read more page </h1>
+<h1> <%= body.title %> </h1>
+<img src="<%=body.image %>">
+<p> <%- body.body %> </p>
+
+<a href="/blogs/update/<%= body._id %>"> Edit </a>
+
+<% include partials/footerCreate.ejs %>

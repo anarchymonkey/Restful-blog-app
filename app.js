@@ -6,6 +6,9 @@ const request = require("request");
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended : true}));
 
+const methodOverride = require("method-override");
+app.use(methodOverride("_method"));
+
 /* Database config */
  const mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost/blog",{ useNewUrlParser : true });
@@ -43,7 +46,6 @@ app.get("/",function(req,res){
 /* ******************************************************************** */
 /*                       BLOGS SITE                                     */
 /* ******************************************************************** */
-
 app.get("/blogs",function(req,res){
   console.log("ACCESSED THE BLOGS PAGE WHERE VIEWERS WILL VIEW THE OBJECTS");
 
@@ -69,12 +71,66 @@ app.get("/blogs/create",function(req,res){
   res.render("createBlog");
 });
 
+app.post("/blogs",function(req,res){
+  Blog.create(req.body.blog,function(err,body){
+
+    if(err)
+    {
+      res.render("createBlog");
+    }
+    else
+    {
+      res.redirect("/blogs");
+    }
+  });
+});
+
+/* ******************************************************************** */
+/*                       BLOGS SHOW                                   */
+/* ******************************************************************** */
+
+app.get("/blogs/:id",function(req,res){
+   Blog.findById(req.params.id,function(err,body){
+     if(err)
+     {
+       res.redirect("/blogs");
+     }
+     else
+     {
+       res.render("show", {body : body});
+     }
+   });
+});
+
 /* ******************************************************************** */
 /*                       BLOGS UPDATE                                   */
 /* ******************************************************************** */
 app.get("/blogs/update/:id",function(req,res){
   console.log("ACCESSED THE BLOGS/UPDATE PAGE WHERE THE VIEWERS WILL UPDATE THE BLOGS");
-  res.render("updateBlog");
+
+  Blog.findById(req.params.id , function(err,updateThis){
+      if(err)
+      {
+        res.redirect("show");
+      }
+      else
+      {
+        res.render("updateBlog",{updated:updateThis});
+      }
+  });
+});
+
+app.put("/blogs/:id",function(req,res){
+  Blog.findByIdAndUpdate(req.params.id,req.body.blog,function(err,updated){
+
+    if(err){
+      res.redirect("/blogs");
+    }
+    else {
+      res.redirect("/blogs/"+ req.params.id);
+    }
+  });
+  console.log("accessed the update page");
 });
 
 

@@ -4,20 +4,20 @@
 <div class="container-fluid">
   <section class="create">
   <h1> Add New Blog </h1>
-<form action="" method="">
+<form action="/blogs" method="post">
   <div class="form-group">
     <h2 class="h2"> Title </h1>
-  <input type="text" name = "blogName" placeholder="enter the blog title" class="form-control">
+  <input type="text" name = "blog[title]" placeholder="enter the blog title" class="form-control" required>
 </div>
 <div class="form-group">
-  <h2 class="h2">Sub-Title</h2>
-  <input type="text" name="heading" placeholder="enter the subtitle" class="form-control">
+  <h2 class="h2">Image-Url</h2>
+  <input type="text" name="blog[image]" placeholder="enter the image url" class="form-control" required>
 </div>
 <div class="form-group">
   <h2 class="h2">Content Goes here</h2>
-  <textarea type="text" name="content" placeholder="enter the subtitle" class="form-control" rows="10" id="textarea"></textarea>
+  <textarea type="text" name="blog[body]" placeholder="enter the subtitle" class="form-control" rows="10" id="textarea" required></textarea>
 </div>
-
+<button class="btn btn-danger" type="submit"> Submit </button>
 </form>
 </section>
 </div>
