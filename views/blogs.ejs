@@ -1,13 +1,15 @@
 <% include partials/header.ejs %>
 <h1> hey this is the blogs page </h1>
 <div class="container-fluid">
+  <section class="main-section">
 <% for(var i = 0 ; i < blogs.length ; i++){%>
-  <h1> <%= blogs[i].title %> </h1>
+  <h1> <span id="underline"><%= blogs[i].title %></span>
+  </h1>
+  <p> <%= blogs[i].create %> </p>
   <img src = "<%= blogs[i].image %>" alt="image">
-  <span><p> <%= blogs[i].create %></p> </span>
-  <p> <%= blogs[i].body.substring(0,100) %></p>
+  <p id="content"> <%= blogs[i].body.substring(0,100) %>...</p>
   <a href="/blogs/<%= blogs[i]._id%>"> Read More... </a>
 <%}%>
+</section>
 </div>
-
 <% include partials/footer.ejs %>

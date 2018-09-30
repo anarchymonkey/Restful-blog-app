@@ -133,6 +133,19 @@ app.put("/blogs/:id",function(req,res){
   console.log("accessed the update page");
 });
 
+app.delete("/blogs/:id",function(req,res){
+  Blog.findOneAndDelete(req.params.id,function (err,body) {
+    if(err)
+    {
+      res.redirect("/blogs");
+    }
+    else
+    {
+      res.redirect("/blogs");
+    }
+  });
+});
+
 
 app.listen(3002,function(){
   console.log("LISTENING ON PORT 3002");
