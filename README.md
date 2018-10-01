@@ -6,3 +6,4 @@ a blog application made using properties of RESTFUL API's
 * ejs
 * mongoDb
 * mongoose
+* npm
