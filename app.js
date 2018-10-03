@@ -147,6 +147,8 @@ app.delete("/blogs/:id",function(req,res){
 });
 
 
-app.listen(3002,function(){
+/*app.listen(3002,function(){
   console.log("LISTENING ON PORT 3002");
 });
+*/
+app.listen(process.env.port);
